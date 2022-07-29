@@ -1,6 +1,7 @@
 package com.oft.resumeportal3;
 
-import lombok.Setter;
+import com.oft.resumeportal3.model.MyUserDetails;
+import com.oft.resumeportal3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package com.oft.resumeportal3;
+package com.oft.resumeportal3.model;
 
 import lombok.Getter;
 import lombok.Setter;

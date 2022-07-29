@@ -1,5 +1,6 @@
-package com.oft.resumeportal3;
+package com.oft.resumeportal3.model;
 
+import com.oft.resumeportal3.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
