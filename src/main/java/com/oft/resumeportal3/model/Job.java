@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,13 @@ public class Job {
     @ElementCollection(targetClass = String.class)
     private List<String> responsibilities = new ArrayList<>();
 
+    public String getFormattedStartDate(){
+        return startDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
+    }
+
+    public String getFormattedEndDate(){
+        return endDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
+    }
 
 
 }
