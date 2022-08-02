@@ -41,10 +41,11 @@ public class HomeController {
         job2.setDesignation("designation 2");
         job2.setId(2);
         job2.setStartDate(LocalDate.of(2019,1,1));
-        job2.setEndDate(LocalDate.of(2020,1,1));
-        List<Job> jobs = new ArrayList<>();
-        jobs.add(job1);
-        jobs.add(job2);
+       //job2.setEndDate(LocalDate.of(2020,1,1));
+        job2.setCurrentJob(true);
+//        List<Job> jobs = new ArrayList<>();
+//        jobs.add(job1);
+//        jobs.add(job2);
         profile1.getJobs().clear();
         profile1.getJobs().add(job1);
         profile1.getJobs().add(job2);
@@ -65,7 +66,7 @@ public class HomeController {
         model.addAttribute("userId", userId);
         UserProfile userProfile = userProfileOptional.get();
         model.addAttribute("userProfile", userProfile);
-        System.out.println(userProfile.getJobs());
+        //System.out.println(userProfile.getJobs());
         return "profile-templates/" + userProfile.getTheme() + "/index";
     }
 }

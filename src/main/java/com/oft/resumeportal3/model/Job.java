@@ -6,6 +6,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -20,7 +22,9 @@ public class Job {
     private  String designation;
     private LocalDate startDate;
     private LocalDate endDate;
-    private boolean isCurrentJob;
+    private boolean currentJob;
+    @ElementCollection(targetClass = String.class)
+    private List<String> responsibilities = new ArrayList<>();
 
 
 
