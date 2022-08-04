@@ -15,8 +15,8 @@ public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int theme;
+    private Integer id;
+    private Integer theme;
     private String summary;
     private String userName;
     private String firstName;

@@ -84,21 +84,34 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String edit(Principal principal, Model model) {
+    public String edit(Principal principal, Model model, @RequestParam(required = false) String add) {
        String userId= principal.getName();
         model.addAttribute("userId",userId);
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userId);
         userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userId));
         UserProfile userProfile = userProfileOptional.get();
+        if("job".equals(add)){
+            userProfile.getJobs().add(new Job());
+        }else if("education".equals(add)){
+            userProfile.getEducations().add(new Education());
+        }else if("skill".equals(add)){
+            userProfile.getSkills().add("");
+        }
         model.addAttribute("userProfile",userProfile);
         return "profile-edit";
     }
 
     @PostMapping("/edit")
-    public String postEdit(Principal principal, Model model) {
-        String userId = principal.getName();
-       // model.addAttribute("userId", principal.getName());
-        return "redirect:/view/"+userId;
+    public String postEdit(Principal principal, @ModelAttribute UserProfile userProfile) {
+        String userName = principal.getName();
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userName);
+        userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userName));
+        UserProfile savedUserProfile = userProfileOptional.get();
+        userProfile.setId(savedUserProfile.getId());
+        userProfile.setUserName(userName);
+        userProfile.setTheme(savedUserProfile.getTheme());
+        userProfileRepository.save(userProfile);
+        return "redirect:/view/"+userName;
     }
 
     @GetMapping("/view/{userId}")
@@ -109,7 +122,7 @@ public class HomeController {
         model.addAttribute("userId", userId);
         UserProfile userProfile = userProfileOptional.get();
         model.addAttribute("userProfile", userProfile);
-        //System.out.println(userProfile.getJobs());
+
         return "profile-templates/" + userProfile.getTheme() + "/index";
     }
 }
