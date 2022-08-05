@@ -66,6 +66,7 @@
             </thead>
             <tr th:each="job, stat: *{jobs}">
                 <td><input class="form-control" th:field="*{jobs[__${stat.index}__].company}"></td>
+                <div class="error" th:if="${#fields.hasErrors('error wow')}" th:errors="*{jobs[__${stat.index}__].company}">Error</div>
                 <td><input class="form-control" th:field="*{jobs[__${stat.index}__].designation}"></td>
                 <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].startDate}"></td>
                 <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].endDate}"></td>

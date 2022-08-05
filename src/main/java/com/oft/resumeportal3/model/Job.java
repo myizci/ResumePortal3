@@ -1,11 +1,14 @@
 package com.oft.resumeportal3.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    //@NotEmpty(message = "company cannot be null")
     private  String company;
     private  String designation;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

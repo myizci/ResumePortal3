@@ -23,7 +23,7 @@
             <h1 class="quickFade delayTwo">
                 <span th:text="${userProfile.firstName}+' '">FirstName</span>
                 <span th:text="${userProfile.lastName}">LastName</span>
-                <a th:if=" ${currentUsersProfile}" href="/edit">Edit</a></h1>
+                <a  th:if=" ${currentUsersProfile}" href="/edit">Edit</a></h1>
             <h2 class="quickFade delayThree" th:text="${userProfile.designation}">Job Title</h2>
         </div>
 
@@ -45,11 +45,7 @@
                 </div>
 
                 <div class="sectionContent">
-                    <p th:text="${userProfile.summary}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                        dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
-                        hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien
-                        quis libero interdum porttitor.</p>
+                    <p th:text="${userProfile.summary}">Summary</p>
                 </div>
             </article>
             <div class="clear"></div>
