@@ -135,8 +135,6 @@ public class HomeController {
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userName);
         userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userName));
         UserProfile savedUserProfile = userProfileOptional.get();
-       // we pull savedUserProfile to get the right id and username
-
         userProfile.setId(savedUserProfile.getId());
         userProfile.setUserName(userName);
         userProfileRepository.save(userProfile);

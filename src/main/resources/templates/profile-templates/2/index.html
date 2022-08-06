@@ -145,53 +145,52 @@
 
     <dt>Education</dt>
     <dd>
-        <h2>Withering Madness University - Planet Vhoorl</h2>
-        <p><strong>Major:</strong> Public Relations<br/>
-            <strong>Minor:</strong> Scale Tending</p>
+        <div class="sectionContent" th:each="education : ${userProfile.educations}">
+            <article>
+                <h2 th:text="${education.college}">College/University</h2>
+                <p th:text="${education.qualification}">Qualification</p>
+                <p th:text="${education.summary}">Education Summary</p>
+                <p th:text="${education.formattedStartDate+'-'+education.formattedEndDate}">Education Summary</p>
+            </article>
+
+        </div>
     </dd>
 
     <dd class="clear"></dd>
 
     <dt>Skills</dt>
     <dd>
-        <h2>Office skills</h2>
-        <p>Office and records management, database administration, event organization, customer support, travel
-            coordination</p>
+        <div class="sectionContent">
+            <ul class="keySkills" th:each="skill : ${userProfile.skills}">
+                <li th:text="${skill}">A Key Skill</li>
 
-        <h2>Computer skills</h2>
-        <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows</p>
+            </ul>
+        </div>
     </dd>
 
     <dd class="clear"></dd>
 
     <dt>Experience</dt>
     <dd>
-        <h2>Doomsday Cult <span>Leader/Overlord - Baton Rogue, LA - 1926-2010</span></h2>
-        <ul>
-            <li>Inspired and won highest peasant death competition among servants</li>
-            <li>Helped coordinate managers to grow cult following</li>
-            <li>Provided untimely deaths to all who opposed</li>
-        </ul>
+        <div class="sectionContent" th:each="job: ${userProfile.jobs}">
+            <article>
+                <p th:text="${job.designation}">Job Title at Company></p>
+                <p th:text="${job.company}">Company</p>
+                <p class="subDetails">
+                    <span th:text="${job.formattedStartDate}">April 2011</span> -
+                    <span th:text="${job.currentJob} ? 'Present' : ${job.formattedEndDate}"> Present</span>
+                </p>
+                <ul th:each="responsibility : ${job.responsibilities}">
+                    <li th:text="${responsibility}">Responsibility</li>
+                </ul>
+            </article>
 
-        <h2>The Watering Hole <span>Bartender/Server - Milwaukee, WI - 2009</span></h2>
-        <ul>
-            <li>Worked on grass-roots promotional campaigns</li>
-            <li>Reduced theft and property damage percentages</li>
-            <li>Janitorial work, Laundry</li>
-        </ul>
+        </div>
     </dd>
 
     <dd class="clear"></dd>
 
-    <dt>Hobbies</dt>
-    <dd>World Domination, Deep Sea Diving, Murder Most Foul</dd>
 
-    <dd class="clear"></dd>
-
-    <dt>References</dt>
-    <dd>Available on request</dd>
-
-    <dd class="clear"></dd>
 </dl>
 
 <div class="clear"></div>

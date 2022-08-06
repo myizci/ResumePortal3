@@ -40,6 +40,7 @@ public class Job {
     }
 
     public String getFormattedEndDate(){
+
         return endDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
     }
 
