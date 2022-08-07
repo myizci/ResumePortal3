@@ -2,8 +2,11 @@ package com.oft.resumeportal3.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @Table
 @Getter
 @Setter
+@ToString
 public class UserProfile {
 
     @Id
@@ -19,6 +23,8 @@ public class UserProfile {
     private Integer theme;
     private String summary;
     private String userName;
+    @NotBlank
+    @Size(min=2, max=10)
     private String firstName;
     private String lastName;
     private String email;

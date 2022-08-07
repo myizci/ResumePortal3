@@ -24,6 +24,8 @@
         <div class="form-group">
             <label>First Name</label>
             <input class="form-control" th:field="*{firstName}">
+            <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</div>
+
         </div>
 
         <div class="form-group">

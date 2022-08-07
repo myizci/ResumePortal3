@@ -76,15 +76,16 @@
 
 							<div class="sectionContent" th:each="job: ${userProfile.jobs}">
 								<article>
-									<p th:text="${job.designation}">Job Title at Company></p>
-									<p th:text="${job.company}">Company</p>
-									<p class="subDetails">
-										<span th:text="${job.formattedStartDate}">April 2011</span> -
-										<span th:text="${job.currentJob} ? 'Present' : ${job.formattedEndDate}"> Present</span>
-									</p>
-									<ul th:each="responsibility : ${job.responsibilities}">
-										<li th:text="${responsibility}">Responsibility</li>
+										<p th:text="${job.designation}">Job Title at Company></p>
+										<p th:text="${job.company}">Company</p>
+										<p class="subDetails">
+											<span th:text="${job.formattedStartDate}">April 2011</span> -
+											<span th:text="${job.currentJob} ? 'Present' : ${job.formattedEndDate}"> Present</span>
+										</p>
+										<ul th:each="responsibility : ${job.responsibilities}">
+											<li th:text="${responsibility}">Responsibility</li>
 									</ul>
+
 								</article>
 
 							</div>

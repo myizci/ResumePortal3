@@ -86,7 +86,7 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String edit(Principal principal, Model model, @RequestParam(required = false) String add) {
+    public String edit(Principal principal,  @RequestParam(required = false) String add, Model model) {
 
         String userName= principal.getName();
 
@@ -105,15 +105,12 @@ public class HomeController {
         }
         model.addAttribute("userProfile",userProfile);
 
-//        if(bindingResult.hasErrors()){
-//            System.out.println(bindingResult.getAllErrors());
-//            return "profile-edit";
-//        }
+
         return "profile-edit";
     }
 
     @GetMapping("/delete")
-    public String delete(Model model, Principal principal, @RequestParam String type, @RequestParam int index) {
+    public String delete(Principal principal, @RequestParam String type, @RequestParam int index) {
         String userId = principal.getName();
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userId);
         userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userId));
@@ -130,7 +127,11 @@ public class HomeController {
     }
 
     @PostMapping("/edit")
-    public String postEdit(Principal principal, @ModelAttribute UserProfile userProfile) {
+    public String postEdit(@ModelAttribute("userProfile")  @Valid  UserProfile userProfile, Principal principal, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors());
+            return "profile-edit";
+        }
         String userName = principal.getName();
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userName);
         userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userName));
